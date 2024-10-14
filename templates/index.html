@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Sirenus</title>
+    <script>
+        function playSound(soundFile) {
+            fetch('/play', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 'sound_file': soundFile }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Sirenus Soundboard</h1>
+    <p>Click one of the buttons below to play a sound!</p>
+    <div class="button-container">
+    	{% for sound in sounds %}
+        	<button onclick="playSound('{{ sound }}')">{{ sound }}</button><br>
+    	{% endfor %}
+    </div>
+</body>
+</html>
+

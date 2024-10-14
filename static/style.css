@@ -1,0 +1,91 @@
+/* Reset some basic styles */
+body, h1, h2, h3, p, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Base font settings */
+body {
+    font-family: 'Inter', sans-serif; /* You can choose any font you prefer */
+    font-size: 1rem; /* Base font size (16px) */
+    line-height: 1.5; /* Line height for better readability */
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark gray text color */
+    padding: 2rem; /* Add some padding to the body */
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5rem; /* 40px */
+    color: #2c3e50; /* Dark blue color */
+    margin-bottom: 1rem; /* Space below heading */
+}
+
+h2 {
+    font-size: 2rem; /* 32px */
+    color: #34495e; /* Medium blue color */
+    margin-bottom: 0.75rem; /* Space below heading */
+}
+
+h3 {
+    font-size: 1.5rem; /* 24px */
+    color: #7f8c8d; /* Gray color */
+    margin-bottom: 0.5rem; /* Space below heading */
+}
+
+/* Paragraph styles */
+p {
+    font-size: 1rem; /* 16px */
+    margin-bottom: 1rem; /* Space below paragraphs */
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); /* 4 items per row */
+    gap: 1rem;
+    max-width: 40rem; /* Optional: control max width if needed */
+    margin: 0 auto; /* Optional: center the grid */
+}
+
+/* Button styles */
+button {
+    background-color: #3498db; /* Blue background */
+    color: white; /* White text */
+    font-family: 'Inter', sans-serif; /* You can choose any font you prefer */
+    font-size: 1rem; /* 16px */
+    padding: 0.75rem 1.5rem; /* Vertical and horizontal padding */
+    border: none; /* No border */
+    border-radius: 0.5rem; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem; /* Reduce padding on smaller screens */
+    }
+
+    h1 {
+        font-size: 2rem; /* 32px */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* 24px */
+    }
+
+    h3 {
+        font-size: 1.25rem; /* 20px */
+    }
+
+    button {
+        font-size: 0.875rem; /* 14px */
+        padding: 0.5rem 1rem; /* Adjust padding */
+    }
+}
+
