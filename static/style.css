@@ -9,7 +9,7 @@ body {
     font-family: 'Inter', sans-serif; /* You can choose any font you prefer */
     font-size: 1rem; /* Base font size (16px) */
     line-height: 1.5; /* Line height for better readability */
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: #222222; /* Dark gray background */
     color: #333; /* Dark gray text color */
     padding: 2rem; /* Add some padding to the body */
 }
@@ -17,25 +17,26 @@ body {
 /* Heading styles */
 h1 {
     font-size: 2.5rem; /* 40px */
-    color: #2c3e50; /* Dark blue color */
+    color: #dedede; /* Light grey color */
     margin-bottom: 1rem; /* Space below heading */
 }
 
 h2 {
     font-size: 2rem; /* 32px */
-    color: #34495e; /* Medium blue color */
+    color: #dedede; /* Light grey color */
     margin-bottom: 0.75rem; /* Space below heading */
 }
 
 h3 {
     font-size: 1.5rem; /* 24px */
-    color: #7f8c8d; /* Gray color */
+    color: #dedede; /* Light grey color */
     margin-bottom: 0.5rem; /* Space below heading */
 }
 
 /* Paragraph styles */
 p {
     font-size: 1rem; /* 16px */
+    color: #a8a29e; /* Light grey color */
     margin-bottom: 1rem; /* Space below paragraphs */
 }
 
