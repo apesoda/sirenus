@@ -4,21 +4,26 @@ body, h1, h2, h3, p, button {
     padding: 0;
 }
 
-/* Base font settings */
+
 body {
-    font-family: 'Inter', sans-serif; /* You can choose any font you prefer */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif; 
     font-size: 1rem; /* Base font size (16px) */
     line-height: 1.5; /* Line height for better readability */
     background-color: #222222; /* Dark gray background */
     color: #333; /* Dark gray text color */
-    padding: 2rem; /* Add some padding to the body */
+    /*padding: 2rem; /* Add some padding to the body */
 }
 
 /* Heading styles */
 h1 {
     font-size: 2.5rem; /* 40px */
+    letter-spacing: -0.1rem;
     color: #dedede; /* Light grey color */
     margin-bottom: 1rem; /* Space below heading */
+    margin-top: 0.75rem;
 }
 
 h2 {
@@ -40,6 +45,7 @@ p {
     margin-bottom: 1rem; /* Space below paragraphs */
 }
 
+/* Element/class styles */
 .title {
     display: flex;
     justify-content: center;
@@ -61,6 +67,39 @@ p {
     gap: 1rem;
     max-width: 80vw; /* Optional: control max width if needed */
     margin: 0 auto; /* Optional: center the grid */
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    position: absolute;
+    bottom: 0;
+    background-color: #262626;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-top: 0.063rem solid #404040;
+}
+
+.footnote {
+    display: flex;
+    align-items: center;
+    color: #a8a29e;
+    text-decoration: none;
+    font-size: 0.75rem;
+    padding: 0.05rem;
+    transition: color 0.3s ease;
+}
+.footnote:hover {
+    color: #dedede;
+}
+.gh {
+    width: 1rem;
+    padding-right: 0.5rem;
 }
 
 /* Button styles */
@@ -85,7 +124,7 @@ button:hover {
 /* Responsive styles */
 @media (max-width: 600px) {
     body {
-        padding: 1rem; /* Reduce padding on smaller screens */
+        /* padding: 1rem; /* Reduce padding on smaller screens */
     }
 
     h1 {
