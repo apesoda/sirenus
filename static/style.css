@@ -6,7 +6,7 @@ body, h1, h2, h3, p, button {
 
 
 body {
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     font-family: 'Inter', sans-serif; 
@@ -14,7 +14,7 @@ body {
     line-height: 1.5; /* Line height for better readability */
     background-color: #222222; /* Dark gray background */
     color: #333; /* Dark gray text color */
-    /*padding: 2rem; /* Add some padding to the body */
+    position: relative;
 }
 
 /* Heading styles */
@@ -24,18 +24,6 @@ h1 {
     color: #dedede; /* Light grey color */
     margin-bottom: 1rem; /* Space below heading */
     margin-top: 0.75rem;
-}
-
-h2 {
-    font-size: 2rem; /* 32px */
-    color: #dedede; /* Light grey color */
-    margin-bottom: 0.75rem; /* Space below heading */
-}
-
-h3 {
-    font-size: 1.5rem; /* 24px */
-    color: #dedede; /* Light grey color */
-    margin-bottom: 0.5rem; /* Space below heading */
 }
 
 /* Paragraph styles */
@@ -78,7 +66,7 @@ footer {
     position: absolute;
     bottom: 0;
     background-color: #262626;
-    width: 100vw;
+    width: 100dvw;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
