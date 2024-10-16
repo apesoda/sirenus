@@ -40,11 +40,26 @@ p {
     margin-bottom: 1rem; /* Space below paragraphs */
 }
 
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .button-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); /* 4 items per row */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); /* 4 items per row */
     gap: 1rem;
-    max-width: 40rem; /* Optional: control max width if needed */
+    max-width: 80vw; /* Optional: control max width if needed */
     margin: 0 auto; /* Optional: center the grid */
 }
 
@@ -59,6 +74,7 @@ button {
     border-radius: 0.5rem; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    width: 9rem;
 }
 
 /* Button hover effect */
@@ -83,7 +99,9 @@ button:hover {
     h3 {
         font-size: 1.25rem; /* 20px */
     }
-
+    .button-container{
+	gap: 0.5rem;	
+    }
     button {
         font-size: 0.875rem; /* 14px */
         padding: 0.5rem 1rem; /* Adjust padding */
