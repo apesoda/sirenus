@@ -3,7 +3,7 @@
 ## Description
 A soundboard where the sound is played on the server, rather than the client. Perfect for in the office or at home!
 
-Currently heavily work in progress
+Currently heavily work-in-progress
 
 ## Features
 - Audio played from a central server
@@ -15,7 +15,7 @@ Currently heavily work in progress
 - **Flask**
 - **Pygame**
 
-Assuming you have Python and Pip installed already you can run this command to install the re-requisites:
+Assuming you have Python and Pip installed already you can run this command to install the pre-requisites:
 
 ```
 pip3 install flask pygame
@@ -29,7 +29,7 @@ cd sirenus/
 
 python3 -m flask run --host='0.0.0.0'
 ```
-Sounds are read from `static/sounds/`, so put any of your desired
+Sounds are read from `static/sounds/`, put all your favorite sounds in this directory to have them show up on the board!
 
 ## Acknowledgements
 This project makes use of the following free (as in speech and beer) content:
