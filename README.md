@@ -9,16 +9,17 @@ Currently heavily work-in-progress
 - Audio played from a central server
 - Hot-swappable sounds, no need to restart the app!
 
-## Pre-requisites
+## Requirements
 - **Python**: Version 3.8 or later
 - **Pip**
 - **Flask**
 - **Pygame**
+- **Mutagen**
 
-Assuming you have Python and Pip installed already you can run this command to install the pre-requisites:
+Assuming you have Python and Pip installed already you can run this command to install the requirements:
 
 ```
-pip3 install flask pygame
+pip3 install flask pygame mutagen
 ```
 
 ## Installation
@@ -33,5 +34,5 @@ Sounds are read from `static/sounds/`, put all your favorite sounds in this dire
 
 ## Acknowledgements
 This project makes use of the following free (as in speech and beer) content:
-- **Boing 2** by magnuswaker: https://freesound.org/s/540790/- License: Creative Commons 0
-- **Github icon** by Lucide -- https://lucide.dev/icons/github -- License: ISC
+- **Boing 2** by magnuswaker: https://freesound.org/s/540790/ License: Creative Commons 0
+- **Github icon** by Lucide: https://lucide.dev/icons/github  License: ISC
