@@ -24,8 +24,7 @@ def is_mp3(file_path: str) -> bool:
 # 'index.html' template with the valid sounds as buttons.
 @app.route('/')
 def index():
-    sound_files = [f for f in os.listdir(SOUND_FOLDER) if f.endswith('.mp3')]
-    valid_files = [f for f in sound_files if is_mp3(os.path.join(SOUND_FOLDER, f))]
+    valid_files = [file for file in os.listdir(SOUND_FOLDER) if is_mp3(os.path.join(SOUND_FOLDER, file))]
     return render_template('index.html', sounds=valid_files)
 
 # Request handling; check if requested file exists and is valid, load and play
