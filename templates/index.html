@@ -33,7 +33,9 @@
     </div>
     <div class="button-container">
     	{% for sound in sounds %}
-        	<button onclick="playSound('{{ sound }}')">{{ sound }}</button><br>
+        	<button onclick="playSound('{{ sound }}')">
+            {{ sound|title|replace(".mp3", "")|replace("_", " ") }}
+          </button><br>
     	{% endfor %}
     </div>
     <div class="footer">
