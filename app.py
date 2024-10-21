@@ -25,6 +25,7 @@ def is_mp3(file_path: str) -> bool:
 @app.route('/')
 def index():
     valid_files = [file for file in os.listdir(SOUND_FOLDER) if is_mp3(os.path.join(SOUND_FOLDER, file))]
+    valid_files.sort()
     return render_template('index.html', sounds=valid_files)
 
 # Request handling; check if requested file exists and is valid, load and play
