@@ -42,5 +42,13 @@ def play_sound():
         return jsonify({'status': 'playing', 'file': sound_file})
     return jsonify({'status': 'error', 'message': 'File not found'}), 404
 
+# Kill sound if player is busy
+@app.route('/stop', methods=['POST'])
+def stop_sound():
+    if pygame.mixer.music.get_busy():
+        pygame.mixer.music.stop()
+        return jsonify({'status': 'stopped'})
+    return jsonify({'status': 'error', 'message': 'No sound is playing'}), 400
+
 if __name__ == '__main__':
     app.run(debug=True)

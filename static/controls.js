@@ -15,3 +15,16 @@ function playSound(soundFile) {
         console.error('Error:', error);
     });
 }
+//Kill sound playing
+function stopSound() {
+    fetch('/stop', {
+        method: 'POST',
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}

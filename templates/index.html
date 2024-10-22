@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
     <title>Sirenus</title>
-    <script src="../static/playSound.js"></script>
+    <script src="../static/controls.js"></script>
 </head>
 <body>
     <div class="title">
@@ -13,6 +13,11 @@
     </div>
     <div class="desc">
 	<p>Click one of the buttons below to play a sound!</p>
+    </div>
+    <div class="stop-container">
+      <button onclick="stopSound()" class="stop-button">
+        ■
+      </button>
     </div>
     <div class="button-container">
     	{% for sound in sounds %}

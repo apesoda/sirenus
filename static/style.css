@@ -1,5 +1,5 @@
 /* Reset some basic styles */
-body, h1, h2, h3, p, button {
+body, h1, p, button {
     margin: 0;
     padding: 0;
 }
@@ -109,6 +109,34 @@ button:hover {
     background-color: #2980b9; /* Darker blue on hover */
 }
 
+.stop-container {
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 95vw; /* Optional: control max width if needed */
+}
+.stop-button {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff3333; /* White text */
+  font-family: 'Inter', sans-serif; /* You can choose any font you prefer */
+  font-size: 1rem; /* 16px */
+  padding: 0.75rem 1.5rem; /* Vertical and horizontal padding */
+  border: 0.1rem solid #ff3333; /* No border */
+  border-radius: 0.5rem; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color color 0.3s ease; /* Smooth transition for hover effect */
+  width: 3rem;
+}
+
+.stop-button:hover {
+  background-color: #ff3333;
+  color: white;
+}
 /* Responsive styles */
 @media (max-width: 600px) {
     body {
@@ -119,17 +147,15 @@ button:hover {
         font-size: 2rem; /* 32px */
     }
 
-    h2 {
-        font-size: 1.5rem; /* 24px */
+    .button-container {
+  	    gap: 0.5rem;	
     }
-
-    h3 {
-        font-size: 1.25rem; /* 20px */
-    }
-    .button-container{
-	gap: 0.5rem;	
-    }
+    
     button {
+        font-size: 0.875rem; /* 14px */
+        padding: 0.5rem 1rem; /* Adjust padding */
+    }
+    .stop-button {
         font-size: 0.875rem; /* 14px */
         padding: 0.5rem 1rem; /* Adjust padding */
     }
