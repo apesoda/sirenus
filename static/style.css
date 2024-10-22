@@ -110,7 +110,7 @@ button:hover {
 }
 
 .stop-container {
-    display: flex;
+    display: none;
     justify-content: end;
     align-items: flex-start;
     flex-wrap: wrap;
