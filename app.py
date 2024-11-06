@@ -50,5 +50,25 @@ def stop_sound():
         return jsonify({'status': 'stopped'})
     return jsonify({'status': 'error', 'message': 'No sound is playing'}), 400
 
+@app.route('/sounds', methods=['GET'])
+def sounds():
+    sounds_per_page = 26
+    page = request.args.get('page', 1, type=int)
+    valid_files = [file for file in os.listdir(SOUND_FOLDER) if is_mp3(os.path.join(SOUND_FOLDER, file))]
+    valid_files.sort()
+
+    # Calculate pagination
+    start = (page - 1) * sounds_per_page
+    end = start + sounds_per_page
+    paginated_files = valid_files[start:end]
+    total_pages = (len(valid_files) + sounds_per_page - 1) // sounds_per_page  # Round up
+
+    return jsonify({
+        'sounds': paginated_files,
+        'page': page,
+        'total_pages': total_pages
+    })
+
+
 if __name__ == '__main__':
     app.run(debug=True)

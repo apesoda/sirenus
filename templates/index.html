@@ -26,6 +26,11 @@
           </button><br>
     	{% endfor %}
     </div>
+    <div class="pagination">
+    <button id="prev-button" onclick="changePage(-1)">Previous</button>
+    <span id="page-info">Page 1</span>
+    <button id="next-button" onclick="changePage(1)">Next</button>
+    </div>
     <div class="footer">
 	<footer>
 	    <a class="footnote" href="https://github.com/apesoda/sirenus"><img class="gh" src="../static/images/github.svg">Source</a>
