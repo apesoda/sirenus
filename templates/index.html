@@ -19,13 +19,13 @@
         ■
       </button>
     </div>
-    <div class="button-container">
-    	{% for sound in sounds %}
-          <button onclick="playSound('{{ sound }}')">
-            {{ sound|title|replace(".mp3", "")|replace("_", " ") }}
-          </button><br>
-    	{% endfor %}
-    </div>
+    <div class="button-container" id="button-container">
+    {% for sound in sounds %}
+      <button onclick="playSound('{{ sound }}')">
+        {{ sound|title|replace(".mp3", "")|replace("_", " ") }}
+      </button><br>
+    {% endfor %}
+i   </div>
     <div class="pagination">
     <button id="prev-button" onclick="changePage(-1)">Previous</button>
     <span id="page-info">Page 1</span>
