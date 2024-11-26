@@ -32,6 +32,12 @@ python3 -m flask run --host='0.0.0.0'
 ```
 Sounds are read from `static/sounds/`, put all your favorite sounds in this directory to have them show up on the board!
 
+## Terminal
+Since the sounds are played using POST requests you can also play them from the terminal
+```
+curl -X POST http://host:5000/play -H "Content-Type: application/json" -d '{"sound_file":"sound.mp3"}'
+```
+
 ## Acknowledgements
 This project makes use of the following free (as in speech and beer) content:
 - **Boing 2** by magnuswaker: https://freesound.org/s/540790/ License: Creative Commons 0
