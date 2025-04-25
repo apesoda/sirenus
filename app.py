@@ -1,10 +1,25 @@
 from flask import Flask, render_template, request, jsonify
+from dotenv import load_dotenv
 import os
 import pygame
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 
 app = Flask(__name__)
+
+# Set default vars
+defaults = {
+    "TITLE": "Sirenus",
+    "HEADING": "Sirenus Soundboard",
+    "DESC": "Click one of the buttons below to play a sound!"
+}
+
+# Load environment variables for custom config
+load_dotenv(dotenv_path='sirenus.cfg')
+
+title = os.getenv('TITLE', defaults['TITLE'])
+heading = os.getenv('HEADING', defaults['HEADING'])
+desc = os.getenv('DESC', defaults['DESC'])
 
 # Initialize pygame for sound playback
 pygame.mixer.init()
@@ -26,7 +41,7 @@ def is_mp3(file_path: str) -> bool:
 def index():
     valid_files = [file for file in os.listdir(SOUND_FOLDER) if is_mp3(os.path.join(SOUND_FOLDER, file))]
     valid_files.sort()
-    return render_template('index.html', sounds=valid_files)
+    return render_template('index.html', sounds=valid_files, title=title, heading=heading, desc=desc)
 
 # Request handling; check if requested file exists and is valid, load and play
 # Return error if request file is not found in the requested location

@@ -15,6 +15,7 @@ Currently heavily work-in-progress
 - **Flask**
 - **Pygame**
 - **Mutagen**
+- **python-dotenv**
 
 Optional (for graphical front-end):
 - **TailwindCSS**: Version 3.4.10
@@ -22,7 +23,7 @@ Optional (for graphical front-end):
 Assuming you have Python and Pip installed already you can run this command to install the requirements:
 
 ```
-pip3 install flask pygame mutagen
+pip3 install flask pygame mutagen python-dotenv
 ```
 
 ## Installation
@@ -34,6 +35,16 @@ cd sirenus/
 python3 -m flask run --host='0.0.0.0'
 ```
 Sounds are read from `static/sounds/`, put all your favorite sounds in this directory to have them show up on the board!
+
+## Customization
+Basic customization is available by editing the `sirenus.cfg` file
+
+Sample:
+```
+TITLE="Your custom tab title goes here"
+HEADING="Custom Soundboard title"
+DESC="Describe the sounds shown below"
+```
 
 ## Terminal
 Since the sounds are played using POST requests you can also play them from the terminal
