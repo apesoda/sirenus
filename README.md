@@ -41,9 +41,9 @@ Basic customization is available by editing the `sirenus.cfg` file
 
 Sample:
 ```
-TITLE="Your custom tab title goes here"
-HEADING="Custom Soundboard title"
-DESC="Describe the sounds shown below"
+TITLE="Cool Tab Title"
+HEADING="The Best Soundboard"
+DESC="Below you will find some beautiful sounds, have a click!"
 ```
 
 ## Terminal
