@@ -16,6 +16,9 @@ Currently heavily work-in-progress
 - **Pygame**
 - **Mutagen**
 
+Optional (for graphical front-end):
+- **TailwindCSS**: Version 3.4.10
+
 Assuming you have Python and Pip installed already you can run this command to install the requirements:
 
 ```
