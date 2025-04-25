@@ -3,34 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/output.css">
     <title>Sirenus</title>
     <script src="../static/controls.js"></script>
 </head>
-<body>
-    <div class="title">
-        <h1>Sirenus Soundboard</h1>
-    </div>
-    <div class="desc">
-	<p>Click one of the buttons below to play a sound!</p>
-    </div>
-    <div class="stop-container">
+
+<!--- Body --->
+<body class="bg-neutral-900 text-neutral-400">
+
+<!--- Content --->
+<main class="p-6 place-content-center">
+
+    <!--- Heading --->
+    <h1 class="text-4xl font-bold tracking-tighter text-center text-neutral-200">
+	Sirenus Soundboard
+    </h1>
+    
+    <!--- Description --->
+    <p id="desc" class="text-center">
+	Click one of the buttons below to play a sound!
+    </p>
+    
+    <!--- #WIP# --->
+    <div id="stop-container" class="hidden">
       <button onclick="stopSound()" class="stop-button">
         ■
       </button>
     </div>
-    <div class="button-container">
+  
+    <!--- Button Container --->
+    <div id="button-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-neutral-200 mx-auto max-w-7xl py-6">
     	{% for sound in sounds %}
-          <button onclick="playSound('{{ sound }}')">
+          <button onclick="playSound('{{ sound }}')" class="rounded-2xl bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150">
             {{ sound|title|replace(".mp3", "")|replace("_", " ") }}
-          </button><br>
+          </button>
     	{% endfor %}
     </div>
-    <div class="footer">
-	<footer>
-	    <a class="footnote" href="https://github.com/apesoda/sirenus"><img class="gh" src="../static/images/github.svg">Source</a>
-	</footer>	
-    </div>
+</main>
+
+<!--- Footer --->
+<footer class="fixed bottom-0 flex bg-neutral-900 border-t border-neutral-700 w-full mx-auto text-xs infline-flex items-center justify-center p-3">
+  <object data="../static/images/github.svg" height="16"></object>
+  <a href="https://github.com/apesoda/sirenus" class="px-2 hover:text-neutral-300 ease-in-out duration-150">
+    Source
+  </a>
+</footer>
 </body>
 </html>
 
