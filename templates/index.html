@@ -12,7 +12,7 @@
 <body class="bg-neutral-900 text-neutral-400">
 
 <!--- Content --->
-<main class="p-6 place-content-center">
+<main class="p-6">
 
     <!--- Heading --->
     <h1 class="text-4xl font-bold tracking-tighter text-center text-neutral-200">
@@ -30,11 +30,19 @@
         ■
       </button>
     </div>
-  
+
+    <!--- Search Box --->
+    <input id="search-box" type="text" placeholder="Search for a sound..." onkeyup="searchSound()" 
+    class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 p-2 focus:outline-none 
+    focus:ring-teal-600 focus:ring-1 rounded-lg border border-neutral-700 focus:border-teal-600
+    lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left lg:text-left mt-2
+    mx-auto block
+    ">
+
     <!--- Button Container --->
     <div id="button-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-neutral-200 mx-auto max-w-7xl py-6">
     	{% for sound in sounds %}
-          <button onclick="playSound('{{ sound }}')" class="rounded-2xl bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150">
+          <button onclick="playSound('{{ sound }}')" class="rounded-lg bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150">
             {{ sound|title|replace(".mp3", "")|replace("_", " ") }}
           </button>
     	{% endfor %}
@@ -42,7 +50,7 @@
 </main>
 
 <!--- Footer --->
-<footer class="fixed bottom-0 flex bg-neutral-900 border-t border-neutral-700 w-full mx-auto text-xs infline-flex items-center justify-center p-3">
+<footer class="fixed bottom-0 flex bg-neutral-900 border-t border-neutral-800  w-full mx-auto text-xs infline-flex items-center justify-center p-3">
   <object data="../static/images/github.svg" height="16"></object>
   <a href="https://github.com/apesoda/sirenus" class="px-2 hover:text-neutral-300 ease-in-out duration-150">
     Source
