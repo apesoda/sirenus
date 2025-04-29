@@ -34,7 +34,7 @@ def is_mp3(file_path: str) -> bool:
     except MutagenError:
         return False
 
-# Look in 'SOUND_FOLDER' for valid mp3's put them in an array and populate the
+# Look in 'sound_dir' for valid mp3's put them in an array and populate the
 # 'index.html' template with the valid sounds as buttons.
 @app.route('/')
 def index():

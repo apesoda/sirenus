@@ -7,6 +7,7 @@ Currently heavily work-in-progress
 
 ## Features
 - Audio played from a central server
+- Search bar to quickly find the sound-bite you need
 - Hot-swappable sounds, no need to restart the app!
 
 ## Requirements
@@ -34,7 +35,7 @@ cd sirenus/
 
 python3 -m flask run --host='0.0.0.0'
 ```
-Sounds are read from `static/sounds/`, put all your favorite sounds in this directory to have them show up on the board!
+Sounds are read from `static/sounds/` by default, put all your favorite sounds in this directory to have them show up on the board!
 
 ## Customization
 Basic customization is available by editing the `sirenus.cfg` file
@@ -45,6 +46,7 @@ TITLE="Cool Tab Title"
 HEADING="The Best Soundboard"
 DESC="Below you will find some beautiful sounds, have a click!"
 ```
+See the file for more options.
 
 ## Terminal
 Since the sounds are played using POST requests you can also play them from the terminal
