@@ -11,7 +11,8 @@ app = Flask(__name__)
 defaults = {
     "TITLE": "Sirenus",
     "HEADING": "Sirenus Soundboard",
-    "DESC": "Click one of the buttons below to play a sound!"
+    "DESC": "Click one of the buttons below to play a sound!",
+    "SOUND_DIR": 'static/sounds/',
 }
 
 # Load environment variables for custom config
@@ -20,12 +21,10 @@ load_dotenv(dotenv_path='sirenus.cfg')
 title = os.getenv('TITLE', defaults['TITLE'])
 heading = os.getenv('HEADING', defaults['HEADING'])
 desc = os.getenv('DESC', defaults['DESC'])
+sound_dir = os.getenv('SOUND_DIR', defaults['SOUND_DIR'])
 
 # Initialize pygame for sound playback
 pygame.mixer.init()
-
-# Define where in the current working directory the sound folder is
-SOUND_FOLDER = os.path.join(os.getcwd(), 'static/sounds')
 
 # Function to validate if a sound is truly an mp3 and not just a file with the extension
 def is_mp3(file_path: str) -> bool:
@@ -39,7 +38,7 @@ def is_mp3(file_path: str) -> bool:
 # 'index.html' template with the valid sounds as buttons.
 @app.route('/')
 def index():
-    valid_files = [file for file in os.listdir(SOUND_FOLDER) if is_mp3(os.path.join(SOUND_FOLDER, file))]
+    valid_files = [file for file in os.listdir(sound_dir) if is_mp3(os.path.join(sound_dir, file))]
     valid_files.sort()
     return render_template('index.html', sounds=valid_files, title=title, heading=heading, desc=desc)
 
@@ -48,7 +47,7 @@ def index():
 @app.route('/play', methods=['POST'])
 def play_sound():
     sound_file: Union[str, None] = request.json.get('sound_file')
-    sound_path = os.path.join(SOUND_FOLDER, sound_file)
+    sound_path = os.path.join(sound_dir, sound_file)
 
     if sound_file and os.path.exists(sound_path) and is_mp3(sound_path):
         # Load and play the sound
