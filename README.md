@@ -46,7 +46,7 @@ TITLE="Cool Tab Title"
 HEADING="The Best Soundboard"
 DESC="Below you will find some beautiful sounds, have a click!"
 ```
-See the file for more options.
+See the [`sirenus.cfg`](sirenus.cfg) file to view  _all_ options.
 
 ## Terminal
 Since the sounds are played using POST requests you can also play them from the terminal
