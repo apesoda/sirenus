@@ -36,6 +36,7 @@ cd sirenus/
 python3 -m flask run --host='0.0.0.0'
 ```
 Sounds are read from `static/sounds/` by default, put all your favorite sounds in this directory to have them show up on the board!
+The mixer assumes a sample rate of of 44100 Hz.
 
 ## Customization
 Basic customization is available by editing the `sirenus.cfg` file

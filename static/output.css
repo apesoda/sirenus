@@ -595,6 +595,18 @@ video {
   max-width: 80rem;
 }
 
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -619,16 +631,8 @@ video {
   border-width: 1px;
 }
 
-.border-2 {
-  border-width: 2px;
-}
-
 .border-t {
   border-top-width: 1px;
-}
-
-.border-t-2 {
-  border-top-width: 2px;
 }
 
 .border-neutral-700 {
