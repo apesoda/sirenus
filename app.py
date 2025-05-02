@@ -13,6 +13,7 @@ defaults = {
     "HEADING": "Sirenus Soundboard",
     "DESC": "Click one of the buttons below to play a sound!",
     "SOUND_DIR": 'static/sounds/',
+    "SAMPLE_RATE": 44100,
 }
 
 # Load environment variables for custom config
@@ -22,8 +23,10 @@ title = os.getenv('TITLE', defaults['TITLE'])
 heading = os.getenv('HEADING', defaults['HEADING'])
 desc = os.getenv('DESC', defaults['DESC'])
 sound_dir = os.getenv('SOUND_DIR', defaults['SOUND_DIR'])
+sample_rate = os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE'])
 
 # Initialize pygame for sound playback
+pygame.mixer.pre_init(sample_rate)
 pygame.mixer.init()
 
 # Function to validate if a sound is truly an mp3 and not just a file with the extension
