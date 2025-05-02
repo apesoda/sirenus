@@ -32,18 +32,26 @@ function stopSound() {
 
 //Filter search results
 function searchSound() {
-  var input, filter, sounds, results, a, i, textValue;
+  var input, filter, sounds, a, i, textValue, label;
   input = document.getElementById('search-box');
   filter = input.value.toUpperCase();
   sounds = document.getElementById('button-container');
   results = sounds.getElementsByTagName('button');
+  label = document.getElementById('msg-label');
 
+  let anyVisible = false;
+  label.style.display = "none";
   for (i = 0; i < results.length; i++) {
-  textValue = results[i].textContent || results[i].innnerText;
-  if (textValue.toUpperCase().indexOf(filter) > -1) {
-    results[i].style.display = "";
+    textValue = results[i].textContent || results[i].innnerText;
+    if (textValue.toUpperCase().indexOf(filter) > -1) {
+      results[i].style.display = "";
+      anyVisible = true;
 	  } else {
-	  results[i].style.display = "none";
-	  }
+	    results[i].style.display = "none";
+    }
+    if (!anyVisible) {
+      label.style.display = "";
+      label.innerHTML = "<br> No matching sounds found";
+    }
   }
 }
