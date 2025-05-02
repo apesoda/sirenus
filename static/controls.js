@@ -46,6 +46,7 @@ function searchSound() {
     if (textValue.toUpperCase().indexOf(filter) > -1) {
       results[i].style.display = "";
       anyVisible = true;
+      label.style.display = "none";
 	  } else {
 	    results[i].style.display = "none";
     }
