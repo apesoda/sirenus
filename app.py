@@ -2,10 +2,12 @@ from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 import os
 import pygame
+import pyttsx3
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 
 app = Flask(__name__)
+
 
 # Set default vars
 defaults = {
@@ -23,11 +25,13 @@ title = os.getenv('TITLE', defaults['TITLE'])
 heading = os.getenv('HEADING', defaults['HEADING'])
 desc = os.getenv('DESC', defaults['DESC'])
 sound_dir = os.getenv('SOUND_DIR', defaults['SOUND_DIR'])
-sample_rate = os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE'])
+sample_rate = int(os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE']))
 
 # Initialize pygame for sound playback
 pygame.mixer.pre_init(sample_rate)
 pygame.mixer.init()
+#init TTS engine
+engine = pyttsx3.init()
 
 # Function to validate if a sound is truly an mp3 and not just a file with the extension
 def is_mp3(file_path: str) -> bool:
@@ -66,6 +70,19 @@ def stop_sound():
         pygame.mixer.music.stop()
         return jsonify({'status': 'stopped'})
     return jsonify({'status': 'error', 'message': 'No sound is playing'}), 400
+
+@app.route('/speak', methods=['POST'])
+def speak_text():
+    text = request.json.get('text', '')
+    if engine._inLoop:
+        engine.endLoop()
+    if text:
+        print(f"Speaking: {text}")
+        print(f"type(text)={type(text)}")
+        engine.say(text)
+        engine.runAndWait()
+        return jsonify({'status': 'speaking', 'text': text})
+    return jsonify({'status': 'error', 'message': 'No text provided'}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
