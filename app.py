@@ -23,7 +23,7 @@ title = os.getenv('TITLE', defaults['TITLE'])
 heading = os.getenv('HEADING', defaults['HEADING'])
 desc = os.getenv('DESC', defaults['DESC'])
 sound_dir = os.getenv('SOUND_DIR', defaults['SOUND_DIR'])
-sample_rate = os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE'])
+sample_rate = int(os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE']))
 
 # Initialize pygame for sound playback
 pygame.mixer.pre_init(sample_rate)
