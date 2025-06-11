@@ -77,8 +77,6 @@ def speak_text():
     if engine._inLoop:
         engine.endLoop()
     if text:
-        print(f"Speaking: {text}")
-        print(f"type(text)={type(text)}")
         engine.say(text)
         engine.runAndWait()
         return jsonify({'status': 'speaking', 'text': text})
