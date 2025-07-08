@@ -5,6 +5,8 @@ import pygame
 import pyttsx3
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
+from typing import Union
+import random
 
 app = Flask(__name__)
 
@@ -30,38 +32,74 @@ sample_rate = int(os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE']))
 # Initialize pygame for sound playback
 pygame.mixer.pre_init(sample_rate)
 pygame.mixer.init()
-#init TTS engine
+# Initialize TTS engine
 engine = pyttsx3.init()
 
 # Function to validate if a sound is truly an mp3 and not just a file with the extension
 def is_mp3(file_path: str) -> bool:
+    # Only allow files with .mp3 extension (case-insensitive)
+    if not file_path.lower().endswith('.mp3'):
+        return False
     try:
         mp3_file: Union[MP3, None] = MP3(file_path)
         return True
     except MutagenError:
         return False
 
-# Look in 'sound_dir' for valid mp3's put them in an array and populate the
-# 'index.html' template with the valid sounds as buttons.
+# Helper to get valid mp3s in a directory
+def get_mp3s_in_dir(directory: str):
+    try:
+        return [f for f in os.listdir(directory) if is_mp3(os.path.join(directory, f))]
+    except FileNotFoundError:
+        return []
+
+# Look in 'sound_dir' for valid mp3's and folders containing mp3's, put them in an array and populate the
+# 'index.html' template with the valid sounds as buttons. Only send the name (not type) to the frontend.
 @app.route('/')
 def index():
-    valid_files = [file for file in os.listdir(sound_dir) if is_mp3(os.path.join(sound_dir, file))]
-    valid_files.sort()
-    return render_template('index.html', sounds=valid_files, title=title, heading=heading, desc=desc)
+    items = []
+    for entry in os.listdir(sound_dir):
+        path = os.path.join(sound_dir, entry)
+        if os.path.isfile(path) and is_mp3(path):
+            items.append(entry)
+        elif os.path.isdir(path):
+            mp3s = get_mp3s_in_dir(path)
+            if mp3s:
+                items.append(entry)
+    items.sort()
+    return render_template('index.html', sounds=items, title=title, heading=heading, desc=desc)
 
 # Request handling; check if requested file exists and is valid, load and play
 # Return error if request file is not found in the requested location
 @app.route('/play', methods=['POST'])
 def play_sound():
-    sound_file: Union[str, None] = request.json.get('sound_file')
-    sound_path = os.path.join(sound_dir, sound_file)
+    sound_file = request.json.get('sound_file')
+    if not sound_file:
+        return jsonify({'status': 'error', 'message': 'No file or folder specified'}), 400
 
-    if sound_file and os.path.exists(sound_path) and is_mp3(sound_path):
-        # Load and play the sound
-        pygame.mixer.music.load(sound_path)
+    # Simple path injection check
+    if '..' in sound_file or sound_file.startswith('/') or '\\' in sound_file:
+        return jsonify({'status': 'error', 'message': 'Invalid file or folder name'}), 400
+
+    path = os.path.join(sound_dir, sound_file)
+    if os.path.isfile(path) and is_mp3(path):
+        # It's a valid mp3 file
+        pygame.mixer.music.load(path)
         pygame.mixer.music.play()
         return jsonify({'status': 'playing', 'file': sound_file})
-    return jsonify({'status': 'error', 'message': 'File not found'}), 404
+    elif os.path.isdir(path):
+        # It's a folder, pick a random mp3 inside
+        mp3s = get_mp3s_in_dir(path)
+        if mp3s:
+            chosen_mp3 = random.choice(mp3s)
+            sound_path = os.path.join(path, chosen_mp3)
+            pygame.mixer.music.load(sound_path)
+            pygame.mixer.music.play()
+            return jsonify({'status': 'playing', 'file': chosen_mp3, 'folder': sound_file})
+        else:
+            return jsonify({'status': 'error', 'message': 'No mp3s in folder'}), 404
+    else:
+        return jsonify({'status': 'error', 'message': 'File or folder not found'}), 404
 
 # Kill sound if player is busy
 @app.route('/stop', methods=['POST'])
