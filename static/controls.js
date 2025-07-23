@@ -56,3 +56,22 @@ function searchSound() {
     }
   }
 }
+
+//Handle TTS functionality
+function speakText() {
+  var input = document.getElementById('tts-input');
+  var text = input.value.trim();
+  // Check if the input is empty
+  if (text === "") {
+    alert("Please enter some text to speak.");
+    return;
+  }
+  //Handle the input string
+  fetch('/speak', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ 'text': text }),
+  })
+}
