@@ -39,18 +39,20 @@
     lg:text-left mt-2 mx-auto block ease-in-out duration-150
     ">
     
-    <!--- Sasy something funny --->
-    <input type="text" id="tts-input" placeholder="Say something funny..."
-    class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 p-2 focus:outline-none 
-    focus:ring-teal-800 focus:ring rounded-lg border border-neutral-700 hover:border-neutral-600 
-    focus:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
-    lg:text-left mt-2 mx-auto block ease-in-out duration-150
-    ">
+    <!--- Say something funny --->
+    <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200">
+      <input type="text" id="tts-input" placeholder="Text-To-Speech"
+      class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 p-2 focus:outline-none 
+      focus:ring-teal-800 focus:ring rounded-l-lg border border-neutral-700 hover:border-neutral-600 
+      focus:border-teal-500 w-full text-center sm:text-left md:text-left
+      lg:text-left mt-2 mx-auto block ease-in-out duration-150
+      ">
 
-    <!--- TTS Button --->
-    <button id="tts-button" onclick="speakText()" class="font-medium rounded-lg bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150">
-      Speak
-    </button>
+      <!--- TTS Button --->
+      <button id="tts-button" onclick="speakText()" class="font-medium rounded-r-lg bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150 mt-2 w-12">
+        💬
+      </button>
+    </div>
 
     <!--- Message Label --->
     <p id='msg-label' class="text-center text-neutral-500"></p>    
