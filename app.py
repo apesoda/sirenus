@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 import os
 import pygame
+from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 
