@@ -9,7 +9,7 @@
 </head>
 
 <!--- Body --->
-<body class="bg-neutral-900 text-neutral-400">
+<body class="bg-neutral-900 text-neutral-400 hide-scrollbar">
 
 <!--- Content --->
 <main class="p-6">
@@ -39,21 +39,21 @@
     lg:text-left mt-2 mx-auto block ease-in-out duration-150
     ">
     
-    <!--- Say something funny --->
-    <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200">
+    <!--- DEBUG STYLE --->
+    <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-none 
+      focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
+      lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden">
       <input type="text" id="tts-input" placeholder="Text-To-Speech"
-      class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 p-2 focus:outline-none 
-      focus:ring-teal-800 focus:ring rounded-l-lg border border-neutral-700 hover:border-neutral-600 
-      focus:border-teal-500 w-full text-center sm:text-left md:text-left
-      lg:text-left mt-2 mx-auto block ease-in-out duration-150
+      class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
+       border-e border-neutral-700 w-full text-center sm:text-left md:text-left
+      lg:text-left mx-auto block p-2
       ">
 
       <!--- TTS Button --->
-      <button id="tts-button" onclick="speakText()" class="font-medium rounded-r-lg bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150 mt-2 w-12">
+      <button id="tts-button" onclick="speakText()" class="font-medium bg-teal-600 hover:bg-teal-700 ease-in-out duration-150 w-12" aria="hidden">
         💬
       </button>
     </div>
-
     <!--- Message Label --->
     <p id='msg-label' class="text-center text-neutral-500"></p>    
 
