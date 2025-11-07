@@ -17,6 +17,7 @@ Currently heavily work-in-progress
 - **Pygame**
 - **Mutagen**
 - **python-dotenv**
+- **pyttsx3**
 
 Optional (for graphical front-end):
 - **TailwindCSS**: Version 3.4.10
@@ -39,11 +40,10 @@ Sounds are read from `static/sounds/` by default, put all your favorite sounds i
 The mixer assumes a sample rate of of 44100 Hz.
 
 
-Linux installation requirements :
-
-If you are on a linux system and if the voice output is not working, then install espeak, ffmpeg and libespeak1 as shown below:
+### Linux installation notes
+If you are on a Linux system and TTS output is not working you might be missing the packages below:
 ```
-sudo apt update && sudo apt install espeak ffmpeg libespeak1
+espeak ffmpeg libespeak1
 ```
 
 
@@ -67,5 +67,5 @@ curl -X POST http://host:5000/play -H "Content-Type: application/json" -d '{"sou
 ## Acknowledgements
 This project makes use of the following free (as in speech and beer) content:
 - **Boing 2** by magnuswaker: https://freesound.org/s/540790/ License: Creative Commons 0
-- **Github icon** by Lucide: https://lucide.dev/icons/github  License: ISC
+- **Icons** by Lucide: https://lucide.dev/icons/github  License: ISC
 - **Inter** by RSMS: https://github.com/rsms/inter.git License: OFL

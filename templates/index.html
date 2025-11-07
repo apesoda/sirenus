@@ -16,12 +16,12 @@
 
     <!--- Heading --->
     <h1 class="text-4xl font-bold tracking-tighter text-center text-neutral-200">
-	{{ heading }}
+	    {{ heading }}
     </h1>
     
     <!--- Description --->
     <p id="desc" class="text-center">
-	{{ desc }}
+	    {{ desc }}
     </p>
     
     <!--- #WIP# --->
@@ -39,18 +39,18 @@
     lg:text-left mt-2 mx-auto block ease-in-out duration-150
     ">
     
-    <!--- DEBUG STYLE --->
+    <!--- TTS Input --->
     <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-none 
       focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
       lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden">
-      <input type="text" id="tts-input" placeholder="Text-To-Speech"
+      <input type="text" id="tts-input" onkeyup="enableTTS(event)" placeholder="Text-To-Speech"
       class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
        border-e border-neutral-700 w-full text-center sm:text-left md:text-left
       lg:text-left mx-auto block p-2
       ">
 
       <!--- TTS Button --->
-      <button id="tts-button" onclick="speakText()" class="font-medium bg-teal-600 hover:bg-teal-700 ease-in-out duration-150 w-12" aria="hidden">
+      <button id="tts-button" onclick="speakText()" class="font-medium disabled:bg-neutral-900 bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150 w-12" disabled>
         💬
       </button>
     </div>

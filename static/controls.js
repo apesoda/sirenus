@@ -57,16 +57,28 @@ function searchSound() {
   }
 }
 
-//Handle TTS functionality
+// Handle TTS
+function enableTTS(event) {
+  var input = document.getElementById('tts-input');
+  var text = input.value.trim();
+  var button = document.getElementById('tts-button');
+  // Check if the input is empty
+  if (text !== "") {
+    button.disabled = false;
+  } else {
+    button.disabled = true;
+  }
+  if (event.key === 'Enter' && text !== "") {
+    button.click();
+  } else if (event.key === 'Enter' && text === "") {
+    alert("Please enter some text to speak.");
+  }
+}
+
+// Fire TTS
 function speakText() {
   var input = document.getElementById('tts-input');
   var text = input.value.trim();
-  // Check if the input is empty
-  if (text === "") {
-    alert("Please enter some text to speak.");
-    return;
-  }
-  //Handle the input string
   fetch('/speak', {
     method: 'POST',
     headers: {
