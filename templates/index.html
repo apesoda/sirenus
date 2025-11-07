@@ -31,6 +31,24 @@
       </button>
     </div>
 
+    <!--- Show More --->
+    <div class="flex lg:w-1/2 md:w-1/2 sm:w-3/4 w-full mx-auto text-center items-center justify-center py-2">
+      <div id="line-left" class="h-px bg-neutral-700 grow"></div>
+      <div id="show-button-container" onclick="toggleOptions()" class="border border-neutral-800 rounded-full hover:bg-neutral-800 duration-150 ease-in-out">
+        <button id="show-button-module" class="block text-sm font-medium text-neutral-200">
+          <span id="show-button-content">
+            <div class="flex items-center px-3 py-1">
+              <p id="show-label">Show More</p>
+              <span id="show-chevron">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down stroke-neutral-200 w-[14px] ml-1"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+          </span>
+        </button>
+      </div>
+      <div id="line-right" class="h-px bg-neutral-700 grow"></div>
+    </div>
+
     <!--- Search Box --->
     <input id="search-box" type="text" placeholder="Search for a sound..." onkeyup="searchSound()" 
     class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 p-2 focus:outline-none 

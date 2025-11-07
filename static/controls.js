@@ -1,4 +1,14 @@
-//Play requested sound
+// Show more options
+function toggleOptions() {
+  var button, chevron, label;
+  button = document.getElementById('show-button-module');
+  chevron = document.getElementById('show-chevron');
+  label = document.getElementById('show-label');
+
+  label.innerHTML = 'Show Less';
+}
+
+// Play requested sound
 function playSound(soundFile) {
   fetch('/play', {
     method: 'POST',
@@ -16,7 +26,7 @@ function playSound(soundFile) {
   });
 }
 
-//Kill sound playing
+// Kill sound playing
 function stopSound() {
   fetch('/stop', {
   method: 'POST',
@@ -30,7 +40,7 @@ function stopSound() {
   });
 }
 
-//Filter search results
+// Filter search results
 function searchSound() {
   var input, filter, sounds, a, i, textValue, label;
   input = document.getElementById('search-box');
