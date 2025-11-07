@@ -567,6 +567,16 @@ video {
   margin-right: auto;
 }
 
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -611,6 +621,10 @@ video {
   flex-direction: row;
 }
 
+.content-center {
+  align-content: center;
+}
+
 .content-start {
   align-content: flex-start;
 }
@@ -637,11 +651,6 @@ video {
 
 .rounded-lg {
   border-radius: 0.5rem;
-}
-
-.rounded-r-lg {
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
 }
 
 .border {
@@ -681,6 +690,18 @@ video {
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
 }
 
+.stroke-neutral-600 {
+  stroke: #525252;
+}
+
+.stroke-neutral-200 {
+  stroke: #e5e5e5;
+}
+
+.stroke-teal-200 {
+  stroke: #99f6e4;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -701,6 +722,11 @@ video {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .text-center {
@@ -746,6 +772,10 @@ video {
 
 .duration-150 {
   transition-duration: 150ms;
+}
+
+.duration-100 {
+  transition-duration: 100ms;
 }
 
 .ease-in-out {
@@ -819,16 +849,6 @@ video {
   background-color: rgb(15 118 110 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-neutral-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-neutral-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
-}
-
 .hover\:text-neutral-300:hover {
   --tw-text-opacity: 1;
   color: rgb(212 212 212 / var(--tw-text-opacity));
@@ -865,9 +885,24 @@ video {
   background-color: rgb(23 23 23 / var(--tw-bg-opacity));
 }
 
-.disabled\:hover\:bg-neutral-800:hover:disabled {
-  --tw-bg-opacity: 1;
-  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+.disabled\:stroke-teal-200:disabled {
+  stroke: #99f6e4;
+}
+
+.group:disabled .group-disabled\:stroke-teal-200 {
+  stroke: #99f6e4;
+}
+
+.group:disabled .group-disabled\:stroke-neutral-600 {
+  stroke: #525252;
+}
+
+.group:disabled .group-disabled\:stroke-neutral-700 {
+  stroke: #404040;
+}
+
+.group:disabled .group-disabled\:stroke-neutral-500 {
+  stroke: #737373;
 }
 
 @media (min-width: 640px) {
