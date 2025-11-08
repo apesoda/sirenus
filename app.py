@@ -32,14 +32,12 @@ sample_rate = int(os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE']))
 # Initialize pygame for sound playback
 pygame.mixer.pre_init(sample_rate)
 pygame.mixer.init()
+
 # Initialize TTS engine
 engine = pyttsx3.init()
 
 # Function to validate if a sound is truly an mp3 and not just a file with the extension
 def is_mp3(file_path: str) -> bool:
-    # Only allow files with .mp3 extension (case-insensitive)
-    if not file_path.lower().endswith('.mp3'):
-        return False
     try:
         mp3_file: Union[MP3, None] = MP3(file_path)
         return True
