@@ -14,17 +14,15 @@ Currently heavily work-in-progress
 - **Python**: Version 3.8 or later
 - **Pip**
 - **Flask**
-- **Pygame**
+- **Pygame-ce**
 - **Mutagen**
 - **python-dotenv**
-
-Optional (for graphical front-end):
-- **TailwindCSS**: Version 3.4.10
+- **pyttsx3**
 
 Assuming you have Python and Pip installed already you can run this command to install the requirements:
 
 ```
-pip3 install flask pygame mutagen python-dotenv
+pip3 install flask pygame-ce mutagen python-dotenv pyttsx3
 ```
 
 ## Installation
@@ -35,10 +33,17 @@ cd sirenus/
 
 python3 -m flask run --host='0.0.0.0'
 ```
-Sounds are read from `static/sounds/` by default, put all your favorite sounds in this directory to have them show up on the board!
-The mixer assumes a sample rate of of 44100 Hz.
 
-## Customization
+### Linux installation notes
+If you are on a Linux system and TTS output is not working out of the box you can try installing the packages below:
+```
+espeak ffmpeg libespeak1
+```
+
+## Configuration
+Sounds are read from `static/sounds/` by default, put all your favorite sounds in this directory to have them show up on the board!
+The mixer assumes a sample rate of `44100 Hz`.
+
 Basic customization is available by editing the `sirenus.cfg` file
 
 Sample:
@@ -55,8 +60,11 @@ Since the sounds are played using POST requests you can also play them from the 
 curl -X POST http://host:5000/play -H "Content-Type: application/json" -d '{"sound_file":"sound.mp3"}'
 ```
 
+## Contributing
+See [`contributing.md`](contributing.md)
+
 ## Acknowledgements
 This project makes use of the following free (as in speech and beer) content:
 - **Boing 2** by magnuswaker: https://freesound.org/s/540790/ License: Creative Commons 0
-- **Github icon** by Lucide: https://lucide.dev/icons/github  License: ISC
+- **Icons** by Lucide: https://lucide.dev/icons/github  License: ISC
 - **Inter** by RSMS: https://github.com/rsms/inter.git License: OFL
