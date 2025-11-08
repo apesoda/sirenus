@@ -24,7 +24,7 @@
 	    {{ desc }}
     </p>
     
-    <!--- #WIP# --->
+    <!--- Stop Button --->
     <div id="stop-container" class="hidden">
       <button onclick="stopSound()" class="stop-button">
         ■
@@ -36,14 +36,12 @@
       <div id="line-left" class="h-px bg-neutral-700 grow"></div>
       <div id="show-button-container" onclick="toggleOptions()" class="border border-neutral-800 rounded-full hover:bg-neutral-800 duration-150 ease-in-out">
         <button id="show-button-module" class="block text-sm font-medium text-neutral-200">
-          <span id="show-button-content">
             <div class="flex items-center px-3 py-1">
               <p id="show-label">Show More</p>
               <span id="show-chevron" class="px-1 duration-150 block ease-in-out origin-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down stroke-neutral-200 w-[14px]"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </div>
-          </span>
         </button>
       </div>
       <div id="line-right" class="h-px bg-neutral-700 grow"></div>
@@ -51,30 +49,35 @@
 
     <!--- More Options ---> 
     <div id="more-options" class="hidden">
-    <!--- Search Box --->
-    <input id="search-box" type="text" placeholder="Search for a sound..." onkeyup="searchSound()" 
-    class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 p-2 focus:outline-none 
-    focus:ring-teal-800 focus:ring rounded-lg border border-neutral-700 hover:border-neutral-600 
-    focus:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
-    lg:text-left mt-2 mx-auto block ease-in-out duration-150
-    ">
-    
-    <!--- TTS Input --->
-    <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-none 
-      focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
-      lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden">
-      <input type="text" id="tts-input" onkeyup="enableTTS(event)" placeholder="Text-To-Speech"
-      class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
-      border-e border-neutral-700 rounded-r-none w-full text-center sm:text-left md:text-left
-      lg:text-left mx-auto block p-2
-      ">
+      <!--- Search Box --->
+      <div id="search-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-none 
+        focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
+        lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden items-center group">
+        <span id="search-icon" class="duration-100 ease-in-out ml-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search stroke-neutral-600"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </span>
+        <input id="search-box" type="text" placeholder="Search for a sound" onkeyup="searchSound()" 
+        class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
+        border-neutral-700 rounded-r-none w-full text-center sm:text-left md:text-left
+        lg:text-left mx-auto block p-2">
+      </div>
 
-      <!--- TTS Button --->
-      <button id="tts-button" onclick="speakText()" class="font-medium group disabled:bg-neutral-900 bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-100 content-center" disabled>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a3a3a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square-icon lucide-bot-message-square group-disabled:stroke-neutral-600 stroke-neutral-200 ease-in-out duration-100 mx-2"><path d="M12 6V2H8"/><path d="M15 11v2"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M20 16a2 2 0 0 1-2 2H8.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 4 20.286V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/><path d="M9 11v2"/>
-        </svg> 
-      </button>
-    </div>
+      <!--- TTS Input --->
+      <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-none 
+        focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
+        lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden">
+        <input type="text" id="tts-input" onkeyup="enableTTS(event)" placeholder="Say something funny!"
+        class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
+        border-e border-neutral-700 rounded-r-none w-full text-center sm:text-left md:text-left
+        lg:text-left mx-auto block p-2
+        ">
+
+        <!--- TTS Button --->
+        <button id="tts-button" onclick="speakText()" class="font-medium group disabled:bg-neutral-900 bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-100 content-center" disabled>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a3a3a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square-icon lucide-bot-message-square group-disabled:stroke-neutral-600 stroke-neutral-200 ease-in-out duration-100 mx-2"><path d="M12 6V2H8"/><path d="M15 11v2"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M20 16a2 2 0 0 1-2 2H8.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 4 20.286V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/><path d="M9 11v2"/>
+          </svg> 
+        </button>
+      </div>
     </div>
     <!--- Message Label --->
     <p id='msg-label' class="text-center text-neutral-500"></p>    
@@ -98,4 +101,3 @@
 </footer>
 </body>
 </html>
-
