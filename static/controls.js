@@ -4,8 +4,18 @@ function toggleOptions() {
   button = document.getElementById('show-button-module');
   chevron = document.getElementById('show-chevron');
   label = document.getElementById('show-label');
+  options = document.getElementById('more-options');
+  var isHidden = window.getComputedStyle(options).display === "none";
 
-  label.innerHTML = 'Show Less';
+  if (isHidden) {
+    options.style.display = "block";
+    label.innerHTML = 'Show Less';
+    chevron.style.transform = "rotate(180deg)";
+  } else {
+    options.style.display = "none";
+    label.innerHTML = 'Show More';
+    chevron.style.transform = "rotate(0deg)";
+  }
 }
 
 // Play requested sound
