@@ -19,9 +19,6 @@ Currently heavily work-in-progress
 - **python-dotenv**
 - **pyttsx3**
 
-Optional (for graphical front-end):
-- **TailwindCSS**: Version 3.4.10
-
 Assuming you have Python and Pip installed already you can run this command to install the requirements:
 
 ```
@@ -64,7 +61,7 @@ curl -X POST http://host:5000/play -H "Content-Type: application/json" -d '{"sou
 ```
 
 ## Contributing
-See contributing.md
+See [`contributing.md`](contributing.md)
 
 ## Acknowledgements
 This project makes use of the following free (as in speech and beer) content:
