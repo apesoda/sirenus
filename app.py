@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import pygame
 import pyttsx3
+from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 from typing import Union
