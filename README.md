@@ -7,7 +7,9 @@ Currently heavily work-in-progress
 
 ## Features
 - Audio played from a central server
+- TTS to play custom sound-bites
 - Search bar to quickly find the sound-bite you need
+- Randomized sounds - just use a subdirectory
 - Hot-swappable sounds, no need to restart the app!
 
 ## Requirements
@@ -61,7 +63,7 @@ curl -X POST http://host:5000/play -H "Content-Type: application/json" -d '{"sou
 ```
 
 ## Contributing
-See [`contributing.md`](contributing.md)
+See [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## Acknowledgements
 This project makes use of the following free (as in speech and beer) content:
