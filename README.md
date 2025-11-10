@@ -39,7 +39,7 @@ python3 -m flask run --host='0.0.0.0'
 ### Linux installation notes
 If you are on a Linux system and TTS output is not working out of the box you can try installing the packages below:
 ```
-espeak ffmpeg libespeak1
+espeak-ng ffmpeg libespeak1
 ```
 
 ## Configuration
