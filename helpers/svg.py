@@ -5,7 +5,9 @@ from pathlib import Path
 _svg_cache = {}
 
 def svg(name):
-    if name in _svg_cache:
+    debug = current_app.debug
+
+    if not debug and name in _svg_cache:
         return _svg_cache[name]
 
     svg_path = Path(current_app.root_path) / "templates" / "svg" / f"{name}.svg"
@@ -15,8 +17,11 @@ def svg(name):
         raise FileNotFoundError(f"SVG '{name}' not found at {svg_path}")
 
     with open(svg_path, encoding="utf-8") as file:
-        content = file.read()
+        content = file.read().strip()
 
-    content = content.strip()
-    _svg_cache[name] = Markup(content)
-    return _svg_cache[name]
+    markup = Markup(content)
+
+    if not debug:
+        _svg_cache[name] = markup
+
+    return markup
