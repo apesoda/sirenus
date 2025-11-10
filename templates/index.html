@@ -39,7 +39,7 @@
             <div class="flex items-center px-3 py-1">
               <p id="show-label">Show More</p>
               <span id="show-chevron" class="px-1 duration-150 block ease-in-out origin-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down stroke-neutral-200 w-[14px]"><path d="m6 9 6 6 6-6"/></svg>
+                {{ svg("chevron-down") }}
               </span>
             </div>
         </button>
@@ -54,7 +54,7 @@
         focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
         lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden items-center group">
         <span id="search-icon" class="duration-100 ease-in-out ml-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search stroke-neutral-600"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          {{ svg("search") }}
         </span>
         <input id="search-box" type="text" placeholder="Search for a sound" onkeyup="searchSound()" 
         class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
@@ -93,7 +93,7 @@
 
 <!--- Footer --->
 <footer class="fixed bottom-0 flex bg-neutral-900 border-t border-neutral-800  w-full mx-auto text-xs infline-flex items-center justify-center p-3">
-  <object data="../static/images/github.svg" height="16"></object>
+  {{ svg("github") }}
   <a href="https://github.com/apesoda/sirenus" class="px-2 hover:text-neutral-300 ease-in-out duration-150">
     Source
   </a>

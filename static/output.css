@@ -562,6 +562,14 @@ video {
   bottom: 0px;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
+.-m-1 {
+  margin: -0.25rem;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -570,6 +578,16 @@ video {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.-mx-1 {
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .ml-2 {
@@ -610,6 +628,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[16px\] {
+  width: 16px;
 }
 
 .max-w-7xl {
@@ -835,18 +857,13 @@ video {
   src: url('../static/fonts/InterVariable.woff2') format('woff2');
 }
 
-/* Hide scrollbar but keep scrolling */
-
 .hide-scrollbar {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari, Opera */
 }
 
 .placeholder\:text-neutral-600::-moz-placeholder {

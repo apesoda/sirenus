@@ -10,6 +10,7 @@ def svg(name):
 
     svg_path = Path(current_app.root_path) / "templates" / "svg" / f"{name}.svg"
 
+
     if not svg_path.exists():
         raise FileNotFoundError(f"SVG '{name}' not found at {svg_path}")
 
