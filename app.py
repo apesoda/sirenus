@@ -7,10 +7,11 @@ from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 from typing import Union
+from helpers.svg import svg
 import random
 
 app = Flask(__name__)
-
+app.jinja_env.globals["svg"] = svg
 
 # Set default vars
 defaults = {

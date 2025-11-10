@@ -10,12 +10,11 @@
   src: url('../static/fonts/InterVariable.woff2') format('woff2');
 }
 
-/* Hide scrollbar but keep scrolling */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 } 
