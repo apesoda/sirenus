@@ -1,16 +1,19 @@
-from flask import Flask, render_template, request, jsonify
-from dotenv import load_dotenv
 import os
 import pygame
 import pyttsx3
+import random
+from dotenv import load_dotenv
+from flask import Flask, render_template, request, jsonify
 from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 from typing import Union
-import random
+from helpers.svg import svg
 
 app = Flask(__name__)
 
+# Load svgs
+app.jinja_env.globals["svg"] = svg
 
 # Set default vars
 defaults = {
