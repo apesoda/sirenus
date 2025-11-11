@@ -96,6 +96,7 @@ def play_sound():
             chosen_mp3 = random.choice(mp3s)
             sound_path = os.path.join(path, chosen_mp3)
             pygame.mixer.music.load(sound_path)
+            # Kill TTS
             pygame.mixer.music.play()
             return jsonify({'status': 'playing', 'file': chosen_mp3, 'folder': sound_file})
         else:
@@ -108,11 +109,14 @@ def play_sound():
 def stop_sound():
     if pygame.mixer.music.get_busy():
         pygame.mixer.music.stop()
-        return jsonify({'status': 'stopped'})
+        return jsonify({'status': 'stopped sound'})
     return jsonify({'status': 'error', 'message': 'No sound is playing'}), 400
 
 @app.route('/speak', methods=['POST'])
 def speak_text():
+    # Kill any soundbites that may be playing
+    if pygame.mixer.music.get_busy():
+        pygame.mixer.music.stop()
     text = request.json.get('text', '')
     if engine._inLoop:
         engine.endLoop()
