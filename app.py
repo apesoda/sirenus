@@ -3,13 +3,14 @@ import pygame
 import pyttsx3
 import random
 import tomllib
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
 from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 from typing import Union
 from helpers.svg import svg
+#from helpers.config import load_config, deep_merge
 
 app = Flask(__name__)
 
@@ -26,9 +27,16 @@ defaults = {
 }
 
 # Load environment variables for custom config
-load_dotenv(dotenv_path='sirenus.cfg')
+#load_dotenv(dotenv_path='sirenus.cfg')
+with open("sirenus.toml", mode="rb") as ucfg:
+    user_config = tomllib.load(ucfg)
 
-title = os.getenv('TITLE', defaults['TITLE'])
+with open("helpers/defaults.toml", mode="rb") as dcfg:
+    default_config = tomllib.load(dcfg)
+
+config = {**default_config, **user_config}
+
+title = config['ui']['title']
 heading = os.getenv('HEADING', defaults['HEADING'])
 desc = os.getenv('DESC', defaults['DESC'])
 sound_dir = os.getenv('SOUND_DIR', defaults['SOUND_DIR'])

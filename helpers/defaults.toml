@@ -1,7 +1,7 @@
-#### USER CONFIG
+#### DEFAULT CONFIG
 
 [ui]
-title = "Glorbiol"
+title = "Sirenus"
 heading = "Sirenus Soundboard"
 desc = "Click one of the buttons below to play a sound!"
 
