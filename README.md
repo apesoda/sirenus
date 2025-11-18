@@ -13,18 +13,17 @@ Currently heavily work-in-progress
 - Hot-swappable sounds, no need to restart the app!
 
 ## Requirements
-- **Python**: Version 3.8 or later
+- **Python**: Version 3.11 or later
 - **Pip**
 - **Flask**
 - **Pygame-ce**
 - **Mutagen**
-- **python-dotenv**
 - **pyttsx3**
 
 Assuming you have Python and Pip installed already you can run this command to install the requirements:
 
 ```
-pip3 install flask pygame-ce mutagen python-dotenv pyttsx3
+pip3 install flask pygame-ce mutagen pyttsx3
 ```
 
 ## Installation
@@ -46,15 +45,16 @@ espeak-ng ffmpeg libespeak1
 Sounds are read from `static/sounds/` by default, put all your favorite sounds in this directory to have them show up on the board!
 The mixer assumes a sample rate of `44100 Hz`.
 
-Basic customization is available by editing the `sirenus.cfg` file
+Basic customization is available by editing the `sirenus.toml` file
 
 Sample:
 ```
-TITLE="Cool Tab Title"
-HEADING="The Best Soundboard"
-DESC="Below you will find some beautiful sounds, have a click!"
+[ui]
+title = "Cool Tab Title"
+heading = "The Best Soundboard"
+desc = "Below you will find some beautiful sounds, have a click!"
 ```
-See the [`sirenus.cfg`](sirenus.cfg) file to view  _all_ options.
+See the [`sirenus.toml`](sirenus.toml) file to view  _all_ options.
 
 ## Terminal
 Since the sounds are played using POST requests you can also play them from the terminal

@@ -3,44 +3,25 @@ import pygame
 import pyttsx3
 import random
 import tomllib
-#from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
 from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 from typing import Union
 from helpers.svg import svg
-#from helpers.config import load_config, deep_merge
+from helpers.config import set_config 
 
 app = Flask(__name__)
+
+with app.app_context():
+    config = set_config()
 
 # Load svgs
 app.jinja_env.globals["svg"] = svg
 
-# Set default vars
-defaults = {
-    "TITLE": "Sirenus",
-    "HEADING": "Sirenus Soundboard",
-    "DESC": "Click one of the buttons below to play a sound!",
-    "SOUND_DIR": 'static/sounds/',
-    "SAMPLE_RATE": 44100,
-}
-
-# Load environment variables for custom config
-#load_dotenv(dotenv_path='sirenus.cfg')
-with open("sirenus.toml", mode="rb") as ucfg:
-    user_config = tomllib.load(ucfg)
-
-with open("helpers/defaults.toml", mode="rb") as dcfg:
-    default_config = tomllib.load(dcfg)
-
-config = {**default_config, **user_config}
-
-title = config['ui']['title']
-heading = os.getenv('HEADING', defaults['HEADING'])
-desc = os.getenv('DESC', defaults['DESC'])
-sound_dir = os.getenv('SOUND_DIR', defaults['SOUND_DIR'])
-sample_rate = int(os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE']))
+# Set
+sound_dir = config['app']['sound_dir']
+sample_rate = config['app']['sample_rate']
 
 # Initialize pygame for sound playback
 pygame.mixer.pre_init(sample_rate)
@@ -78,7 +59,7 @@ def index():
             if mp3s:
                 items.append(entry)
     items.sort()
-    return render_template('index.html', sounds=items, title=title, heading=heading, desc=desc)
+    return render_template('index.html', sounds=items, config=config)
 
 # Request handling; check if requested file exists and is valid, load and play
 # Return error if request file is not found in the requested location

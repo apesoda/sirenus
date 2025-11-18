@@ -1,31 +1,32 @@
 """
-This helper script allows us to yadda yadda
+This helper script let's us merge the user provided config with the default
+values. This makes configuration easier for the user as they can simply
+change what they want to change without filling out the entire config
+
+heavily 'inspired' by https://gist.github.com/angstwad/bf22d1822c38a92ec0a9
+wink wink
 """
 import tomllib
 from flask import current_app
 from pathlib import Path
 
+def config_merge(dct, merge_dct):
+    for k, v in merge_dct.items():
+        if (k in dct and isinstance(dct[k], dict) and isinstance(merge_dct[k], dict)): 
+            config_merge(dct[k], merge_dct[k])
+        else:
+            dct[k] = merge_dct[k]
+    return dct
 
-
-def load_config():
-        
+def set_config():
     default_config_path = Path(current_app.root_path) / "helpers" / "defaults.toml"
     user_config_path = Path(current_app.root_path) / "sirenus.toml"
 
-    with open(default_config_path, mode="rb") as dcfg:
-        default_config = tomllib.load(dcfg)
-    
-    with open(user_config_path, mode="rb") as ucfg:
-        user_config = tomllib.load(ucfg)
+    with open(user_config_path, 'rb') as cfg:
+        user_config = tomllib.load(cfg)
 
-    return default_config, user_config
+    with open(default_config_path, 'rb') as cfg:
+        default_config = tomllib.load(cfg)
 
-def deep_merge(default_config, user_config):
-    final_config = default_config.copy()
-    for key, value in user_config.items():
-        if isinstance(value, dict) and key in final_config and isinstance(final_config[key], dict):
-            final_config[key] = deep_merge(final_config[key], value)
-        else:
-            final_config[key] = value
-
-    return final_config
+    config = config_merge(default_config, user_config)
+    return config
