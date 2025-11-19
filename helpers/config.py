@@ -18,6 +18,24 @@ def config_merge(dct, merge_dct):
             dct[k] = merge_dct[k]
     return dct
 
+def validate_config(config):
+    match config:
+        case {
+            "ui": {
+                "title": str(),
+                "heading": str(),
+                "desc": str()
+            },
+            "app": {
+                "sound_dir": str(),
+                "sample_rate": int()
+            },
+        }:
+            pass
+        case _:
+            raise ValueError(f"invalid configuration: {config}")
+            
+
 def set_config():
     default_config_path = Path(current_app.root_path) / "helpers" / "defaults.toml"
     user_config_path = Path(current_app.root_path) / "sirenus.toml"
