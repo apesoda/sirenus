@@ -15,7 +15,7 @@ def svg(name):
     # Check if app is running in debug mode
     debug = current_app.debug
 
-    # Return cached svg if present cahce in prod
+    # Return cached svg if present cache in prod
     if not debug and name in _svg_cache:
         return _svg_cache[name]
 
