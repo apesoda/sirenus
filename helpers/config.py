@@ -10,10 +10,10 @@ import tomllib
 from flask import current_app
 from pathlib import Path
 
-def config_merge(dct, merge_dct):
+def merge_config(dct, merge_dct):
     for k, v in merge_dct.items():
         if (k in dct and isinstance(dct[k], dict) and isinstance(merge_dct[k], dict)): 
-            config_merge(dct[k], merge_dct[k])
+            merge_config(dct[k], merge_dct[k])
         else:
             dct[k] = merge_dct[k]
     return dct
@@ -46,5 +46,5 @@ def set_config():
     with open(default_config_path, 'rb') as cfg:
         default_config = tomllib.load(cfg)
 
-    config = config_merge(default_config, user_config)
+    config = merge_config(default_config, user_config)
     return config
