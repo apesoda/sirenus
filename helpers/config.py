@@ -22,13 +22,15 @@ def validate_config(config):
     match config:
         case {
             "ui": {
-                "title": str(),
+                "desc": str(),
                 "heading": str(),
-                "desc": str()
+                "title": str()
             },
             "app": {
-                "sound_dir": str(),
-                "sample_rate": int()
+                "host": str(),
+                "port": int(),
+                "sample_rate": int(),
+                "sound_dir": str()
             },
         }:
             pass

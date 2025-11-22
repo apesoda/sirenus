@@ -86,7 +86,6 @@ def play_sound():
             chosen_mp3 = random.choice(mp3s)
             sound_path = os.path.join(path, chosen_mp3)
             pygame.mixer.music.load(sound_path)
-            # Kill TTS
             pygame.mixer.music.play()
             return jsonify({'status': 'playing', 'file': chosen_mp3, 'folder': sound_file})
         else:
@@ -117,4 +116,4 @@ def speak_text():
     return jsonify({'status': 'error', 'message': 'No text provided'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=config['app']['port'], host=config['app']['host'])
