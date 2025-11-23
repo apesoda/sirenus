@@ -32,7 +32,7 @@ Installing and running the app is easily done as follows:
 git clone https://github.com/apesoda/sirenus 
 cd sirenus/
 
-python3 app.py
+./app.py
 ```
 
 ### Linux installation notes
