@@ -1,37 +1,28 @@
+#!/usr/bin/env python3
 import os
 import pygame
 import pyttsx3
 import random
-from dotenv import load_dotenv
+import tomllib
 from flask import Flask, render_template, request, jsonify
 from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 from typing import Union
 from helpers.svg import svg
+from helpers.config import set_config 
 
 app = Flask(__name__)
+
+with app.app_context():
+    config = set_config()
 
 # Load svgs
 app.jinja_env.globals["svg"] = svg
 
-# Set default vars
-defaults = {
-    "TITLE": "Sirenus",
-    "HEADING": "Sirenus Soundboard",
-    "DESC": "Click one of the buttons below to play a sound!",
-    "SOUND_DIR": 'static/sounds/',
-    "SAMPLE_RATE": 44100,
-}
-
-# Load environment variables for custom config
-load_dotenv(dotenv_path='sirenus.cfg')
-
-title = os.getenv('TITLE', defaults['TITLE'])
-heading = os.getenv('HEADING', defaults['HEADING'])
-desc = os.getenv('DESC', defaults['DESC'])
-sound_dir = os.getenv('SOUND_DIR', defaults['SOUND_DIR'])
-sample_rate = int(os.getenv('SAMPLE_RATE', defaults['SAMPLE_RATE']))
+# Set
+sound_dir = config['app']['sound_dir']
+sample_rate = config['app']['sample_rate']
 
 # Initialize pygame for sound playback
 pygame.mixer.pre_init(sample_rate)
@@ -69,7 +60,7 @@ def index():
             if mp3s:
                 items.append(entry)
     items.sort()
-    return render_template('index.html', sounds=items, title=title, heading=heading, desc=desc)
+    return render_template('index.html', sounds=items, config=config)
 
 # Request handling; check if requested file exists and is valid, load and play
 # Return error if request file is not found in the requested location
@@ -96,7 +87,6 @@ def play_sound():
             chosen_mp3 = random.choice(mp3s)
             sound_path = os.path.join(path, chosen_mp3)
             pygame.mixer.music.load(sound_path)
-            # Kill TTS
             pygame.mixer.music.play()
             return jsonify({'status': 'playing', 'file': chosen_mp3, 'folder': sound_file})
         else:
@@ -127,4 +117,4 @@ def speak_text():
     return jsonify({'status': 'error', 'message': 'No text provided'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=config['app']['port'], host=config['app']['host'])

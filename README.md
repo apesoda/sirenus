@@ -13,18 +13,17 @@ Currently heavily work-in-progress
 - Hot-swappable sounds, no need to restart the app!
 
 ## Requirements
-- **Python**: Version 3.8 or later
+- **Python**: Version 3.11 or later
 - **Pip**
 - **Flask**
 - **Pygame-ce**
 - **Mutagen**
-- **python-dotenv**
 - **pyttsx3**
 
 Assuming you have Python and Pip installed already you can run this command to install the requirements:
 
 ```
-pip3 install flask pygame-ce mutagen python-dotenv pyttsx3
+pip3 install flask pygame-ce mutagen pyttsx3
 ```
 
 ## Installation
@@ -33,7 +32,7 @@ Installing and running the app is easily done as follows:
 git clone https://github.com/apesoda/sirenus 
 cd sirenus/
 
-python3 -m flask run --host='0.0.0.0'
+./app.py
 ```
 
 ### Linux installation notes
@@ -46,20 +45,21 @@ espeak-ng ffmpeg libespeak1
 Sounds are read from `static/sounds/` by default, put all your favorite sounds in this directory to have them show up on the board!
 The mixer assumes a sample rate of `44100 Hz`.
 
-Basic customization is available by editing the `sirenus.cfg` file
+Basic customization is available by editing the [`sirenus.toml`](sirenus.toml) file
 
 Sample:
 ```
-TITLE="Cool Tab Title"
-HEADING="The Best Soundboard"
-DESC="Below you will find some beautiful sounds, have a click!"
+[ui]
+title = "Cool Tab Title"
+heading = "The Best Soundboard"
+desc = "Below you will find some beautiful sounds, have a click!"
 ```
-See the [`sirenus.cfg`](sirenus.cfg) file to view  _all_ options.
+See the [`defaults.toml`](helpers/defaults.toml) file to view  _all_ options.
 
-## Terminal
-Since the sounds are played using POST requests you can also play them from the terminal
+## API
+You can use requests to the API to trigger sounds/TTS as well! This way you can hook playing sounds into scripts/workflows.
 ```
-curl -X POST http://host:5000/play -H "Content-Type: application/json" -d '{"sound_file":"sound.mp3"}'
+curl -X POST http://sirenus.example.com/play -H "Content-Type: application/json" -d '{"sound_file":"sound.mp3"}'
 ```
 
 ## Contributing

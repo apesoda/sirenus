@@ -1,0 +1,10 @@
+#### USER CONFIG
+
+[ui]
+title = "Sirenus"
+heading = "Sirenus Soundboard"
+desc = "Click one of the buttons below to play a sound!"
+
+[app]
+sound_dir = 'static/sounds/'
+sample_rate = 44100
