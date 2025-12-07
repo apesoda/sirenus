@@ -234,6 +234,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my-auto {
+    margin-block: auto;
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -272,6 +275,9 @@
   }
   .w-\[14px\] {
     width: 14px;
+  }
+  .w-\[16px\] {
+    width: 16px;
   }
   .w-full {
     width: 100%;
@@ -371,9 +377,6 @@
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
-  }
-  .p-3 {
-    padding: calc(var(--spacing) * 3);
   }
   .p-6 {
     padding: calc(var(--spacing) * 6);
