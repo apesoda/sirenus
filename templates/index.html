@@ -50,24 +50,24 @@
     <!--- More Options ---> 
     <div id="more-options" class="hidden">
       <!--- Search Box --->
-      <div id="search-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-none 
-        focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
+      <div id="search-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-hidden
+        focus-within:ring-teal-800 active-within:ring-3 focus-within:ring-3 rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
         lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden items-center group">
         <span id="search-icon" class="duration-100 ease-in-out ml-2">
           {{ svg("search") }}
         </span>
         <input id="search-box" type="text" placeholder="Search for a sound" onkeyup="searchSound()" 
-        class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
+        class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-hidden
         border-neutral-700 rounded-r-none w-full text-center sm:text-left md:text-left
         lg:text-left mx-auto block p-2">
       </div>
 
       <!--- TTS Input --->
-      <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-none 
-        focus-within:ring-teal-800 active-within:ring focus-within:ring rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
+      <div id="tts-container" class="gap-0 flex flex-row content-start w-1/2 block mx-auto text-neutral-200 bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus-within:outline-hidden
+        focus-within:ring-teal-800 active-within:ring-3 focus-within:ring-3 rounded-lg border border-neutral-700 hover:border-neutral-600 hover:focus-within:border-teal-500 focus-within:border-teal-500 lg:w-1/2 md:w-1/2 sm:w-3/4 w-full text-center sm:text-left md:text-left
         lg:text-left mt-2 mx-auto block ease-in-out duration-150 overflow-hidden">
         <input type="text" id="tts-input" onkeyup="enableTTS(event)" placeholder="Say something funny!"
-        class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-none 
+        class="bg-neutral-800 placeholder:text-neutral-600 text-neutral-400 focus:outline-hidden
         border-e border-neutral-700 rounded-r-none w-full text-center sm:text-left md:text-left
         lg:text-left mx-auto block p-2
         ">
