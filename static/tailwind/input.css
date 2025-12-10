@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../../templates/*.html";
+@source "../../templates/svg/*.svg";
 
 @font-face {
   font-family: 'Inter';
@@ -8,6 +9,10 @@
   font-weight: 100 900;
   font-display: swap;
   src: url('../static/fonts/InterVariable.woff2') format('woff2');
+}
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui;
 }
 
 .hide-scrollbar {

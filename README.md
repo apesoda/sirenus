@@ -70,3 +70,4 @@ This project makes use of the following free (as in speech and beer) content:
 - **Boing 2** by magnuswaker: https://freesound.org/s/540790/ License: Creative Commons 0
 - **Icons** by Lucide: https://lucide.dev/icons/github  License: ISC
 - **Inter** by RSMS: https://github.com/rsms/inter.git License: OFL
+- **TailwindCSS** by Tailwind Labs: https://github.com/tailwindlabs/tailwindcss License: MIT
