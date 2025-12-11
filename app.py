@@ -116,5 +116,10 @@ def speak_text():
         return jsonify({'status': 'speaking', 'text': text})
     return jsonify({'status': 'error', 'message': 'No text provided'}), 400
 
+@app.route('/upload', methods=['POST'])
+def upload_sound():
+    print('fixme')
+
+
 if __name__ == '__main__':
     app.run(port=config['app']['port'], host=config['app']['host'])
