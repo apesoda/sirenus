@@ -4,16 +4,18 @@ import pygame
 import pyttsx3
 import random
 import tomllib
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, flash, render_template, request, jsonify
 from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
 from typing import Union
+from werkzeug.utils import secure_filename
 from helpers.svg import svg
 from helpers.config import set_config 
 
 app = Flask(__name__)
 
+# Pass app context to helper functions
 with app.app_context():
     config = set_config()
 
@@ -118,6 +120,15 @@ def speak_text():
 
 @app.route('/upload', methods=['POST'])
 def upload_sound():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return jsonify({'status': 'error', 'message': 'Missing field "file" in request'}), 400
+        file = request.files['file'] 
+        if file.filename == '':
+            return jsonify({'status': 'error', 'message': 'No file selected/Unnamed file'}), 400
+        if file and is_mp3(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(config['app']['sound_dir']. filename))
     print('fixme')
 
 
