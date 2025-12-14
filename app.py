@@ -4,7 +4,7 @@ import pygame
 import pyttsx3
 import random
 import tomllib
-from flask import Flask, flash, render_template, request, jsonify
+from flask import Flask, flash, render_template, request, redirect, jsonify, url_for
 from pygame import mixer, base
 from mutagen.mp3 import MP3
 from mutagen._util import MutagenError
@@ -25,6 +25,7 @@ app.jinja_env.globals["svg"] = svg
 # Set
 sound_dir = config['app']['sound_dir']
 sample_rate = config['app']['sample_rate']
+ALLOWED_EXTENSIONS = {'mp3'}
 
 # Initialize pygame for sound playback
 pygame.mixer.pre_init(sample_rate)
@@ -32,6 +33,11 @@ pygame.mixer.init()
 
 # Initialize TTS engine
 engine = pyttsx3.init()
+
+# From Flask docs (lol)
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Function to validate if a sound is truly an mp3 and not just a file with the extension
 def is_mp3(file_path: str) -> bool:
@@ -121,16 +127,28 @@ def speak_text():
 @app.route('/upload', methods=['POST'])
 def upload_sound():
     if request.method == 'POST':
+        # check if the post request has the file part
         if 'file' not in request.files:
-            return jsonify({'status': 'error', 'message': 'Missing field "file" in request'}), 400
-        file = request.files['file'] 
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
         if file.filename == '':
-            return jsonify({'status': 'error', 'message': 'No file selected/Unnamed file'}), 400
-        if file and is_mp3(file.filename):
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(config['app']['sound_dir']. filename))
-    print('fixme')
-
-
+            file.save(os.path.join(config['app']['sound_dir'], filename))
+            return redirect(url_for('upload_sound', name=filename))
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+    '''
 if __name__ == '__main__':
     app.run(port=config['app']['port'], host=config['app']['host'])
