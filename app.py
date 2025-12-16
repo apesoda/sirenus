@@ -22,7 +22,7 @@ with app.app_context():
 # Load svgs
 app.jinja_env.globals["svg"] = svg
 
-# Set
+# Set variables
 sound_dir = config['app']['sound_dir']
 sample_rate = config['app']['sample_rate']
 ALLOWED_EXTENSIONS = {'mp3'}
