@@ -59,7 +59,14 @@ See the [`defaults.toml`](helpers/defaults.toml) file to view  _all_ options.
 ## API
 You can use requests to the API to trigger sounds/TTS as well! This way you can hook playing sounds into scripts/workflows.
 ```
+# Play a sound
 curl -X POST http://sirenus.example.com/play -H "Content-Type: application/json" -d '{"sound_file":"sound.mp3"}'
+
+# Speak a phrase
+curl -X POST http://sirenus.example.com/speak -H "Content-Type: application/json" -d '{"text":"dude. check the news. it doesnt matter what channel"}'
+
+# Upload a sound
+curl -X POST -F "file=@<path to file>" http://sirenus.example.com/upload
 ```
 
 ## Contributing
