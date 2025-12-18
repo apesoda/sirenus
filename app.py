@@ -126,29 +126,20 @@ def speak_text():
 
 @app.route('/upload', methods=['POST'])
 def upload_sound():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(config['app']['sound_dir'], filename))
-            return redirect(url_for('upload_sound', name=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+   # check if the post request has the file part
+   if 'file' not in request.files:
+       flash('No file part')
+       return redirect(request.url)
+   file = request.files['file']
+   # If the user does not select a file, the browser submits an
+   # empty file without a filename.
+   if file.filename == '':
+       flash('No selected file')
+       return redirect(request.url)
+   if file and allowed_file(file.filename):
+       filename = secure_filename(file.filename)
+       file.save(os.path.join(config['app']['sound_dir'], filename))
+       return redirect(url_for('upload_sound', name=filename))
+
 if __name__ == '__main__':
     app.run(port=config['app']['port'], host=config['app']['host'])
