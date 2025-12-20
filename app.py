@@ -136,7 +136,7 @@ def upload_sound():
    if file.filename == '':
        flash('No selected file')
        return redirect(request.url)
-   if file and is_mp3(file.filename):
+   if file and allowed_file(file.filename):
        filename = secure_filename(file.filename)
        file.save(os.path.join(config['app']['sound_dir'], filename))
        return redirect(url_for('upload_sound', name=filename))
