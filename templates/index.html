@@ -14,6 +14,12 @@
 <!--- Content --->
 <main class="p-6">
 
+    <!--- Upload button --->
+    <div class="flex flex-row-reverse items-end">
+      <button onclick="uploadSound()" class="border border-neutral-700 hover:border-neutral-600 duration-150 ease-in-out rounded-lg p-2 mx-0 end hover:bg-neutral-800">
+        {{ svg("upload") }}
+      </button>
+    </div>
     <!--- Heading --->
     <h1 class="text-4xl font-bold tracking-tighter text-center text-neutral-200">
 	    {{ config['ui']['heading'] }}
