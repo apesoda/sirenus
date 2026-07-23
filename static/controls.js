@@ -77,6 +77,7 @@ function searchSound() {
   }
 }
 
+
 // Handle TTS
 function enableTTS(event) {
   var input = document.getElementById('tts-input');
@@ -107,3 +108,15 @@ function speakText() {
     body: JSON.stringify({ 'text': text }),
   })
 }
+
+// Quickly search using the '/'-key
+window.addEventListener("keydown", function (event) {
+  if (event.code === "Slash" && ( window.getComputedStyle(document.getElementById('more-options')).display === "none"))  {
+    event.preventDefault();
+    toggleOptions();
+    document.getElementById('search-box').focus();
+  } else if (event.code === "Escape" && ( window.getComputedStyle(document.getElementById('more-options')).display !== "none"))  {
+    event.preventDefault();
+    toggleOptions();
+    }
+});
