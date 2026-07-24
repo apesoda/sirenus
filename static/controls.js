@@ -109,14 +109,19 @@ function speakText() {
   })
 }
 
-// Quickly search using the '/'-key
-window.addEventListener("keydown", function (event) {
-  if (event.code === "Slash" && ( window.getComputedStyle(document.getElementById('more-options')).display === "none"))  {
+// Fucntion to quickly search using the '/'-key
+function quickSearch() {
+  var options = document.getElementById('more-options');
+  var optionsVisibility = window.getComputedStyle(options).display;
+  if (event.code === "Slash" && (optionsVisibility  === "none"))  {
     event.preventDefault();
     toggleOptions();
     document.getElementById('search-box').focus();
-  } else if (event.code === "Escape" && ( window.getComputedStyle(document.getElementById('more-options')).display !== "none"))  {
+  } else if (event.code === "Escape" && (optionsVisibility  !== "none"))  {
     event.preventDefault();
     toggleOptions();
-    }
-});
+  }
+}
+
+// Listener to quickly search using the '/'-key
+window.addEventListener("keydown", quickSearch);
