@@ -1,10 +1,15 @@
-// Show more options
+// ============================================================
+// Show More / Show Less
+// ============================================================
+
 function toggleOptions() {
   var button, chevron, label;
+
   button = document.getElementById('show-button-module');
   chevron = document.getElementById('show-chevron');
   label = document.getElementById('show-label');
   options = document.getElementById('more-options');
+
   var isHidden = window.getComputedStyle(options).display === "none";
 
   if (isHidden) {
@@ -18,6 +23,11 @@ function toggleOptions() {
   }
 }
 
+
+// ============================================================
+// Sound Controls
+// ============================================================
+
 // Play requested sound
 function playSound(soundFile) {
   fetch('/play', {
@@ -25,34 +35,40 @@ function playSound(soundFile) {
     headers: {
       'Content-Type': 'application/json',
     },
-      body: JSON.stringify({ 'sound_file': soundFile }),
+    body: JSON.stringify({ 'sound_file': soundFile }),
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
 
-// Kill sound playing
+// Stop sound playing
 function stopSound() {
   fetch('/stop', {
-  method: 'POST',
+    method: 'POST',
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
+
+
+// ============================================================
+// Sound Search
+// ============================================================
 
 // Filter search results
 function searchSound() {
   var input, filter, sounds, a, i, textValue, label;
+
   input = document.getElementById('search-box');
   filter = input.value.toUpperCase();
   sounds = document.getElementById('button-container');
@@ -60,16 +76,20 @@ function searchSound() {
   label = document.getElementById('msg-label');
 
   let anyVisible = false;
+
   label.style.display = "none";
+
   for (i = 0; i < results.length; i++) {
     textValue = results[i].textContent || results[i].innnerText;
+
     if (textValue.toUpperCase().indexOf(filter) > -1) {
       results[i].style.display = "";
       anyVisible = true;
       label.style.display = "none";
-	  } else {
-	    results[i].style.display = "none";
+    } else {
+      results[i].style.display = "none";
     }
+
     if (!anyVisible) {
       label.style.display = "";
       label.innerHTML = "<br> No matching sounds found";
@@ -78,17 +98,23 @@ function searchSound() {
 }
 
 
-// Handle TTS
+// ============================================================
+// Text-to-Speech
+// ============================================================
+
+// Handle TTS input
 function enableTTS(event) {
   var input = document.getElementById('tts-input');
   var text = input.value.trim();
   var button = document.getElementById('tts-button');
+
   // Check if the input is empty
   if (text !== "") {
     button.disabled = false;
   } else {
     button.disabled = true;
   }
+
   if (event.key === 'Enter' && text !== "") {
     button.click();
   } else if (event.key === 'Enter' && text === "") {
@@ -100,6 +126,7 @@ function enableTTS(event) {
 function speakText() {
   var input = document.getElementById('tts-input');
   var text = input.value.trim();
+
   fetch('/speak', {
     method: 'POST',
     headers: {
@@ -109,19 +136,26 @@ function speakText() {
   })
 }
 
-// Fucntion to quickly search using the '/'-key
+
+// ============================================================
+// Keyboard Shortcuts
+// ============================================================
+
+// Quickly search using the '/' key
 function quickSearch() {
   var options = document.getElementById('more-options');
   var optionsVisibility = window.getComputedStyle(options).display;
-  if (event.code === "Slash" && (optionsVisibility  === "none"))  {
+
+  if (event.code === "Slash" && (optionsVisibility === "none")) {
     event.preventDefault();
     toggleOptions();
     document.getElementById('search-box').focus();
-  } else if (event.code === "Escape" && (optionsVisibility  !== "none"))  {
+
+  } else if (event.code === "Escape" && (optionsVisibility !== "none")) {
     event.preventDefault();
     toggleOptions();
   }
 }
 
-// Listener to quickly search using the '/'-key
+// Listener for keyboard shortcuts
 window.addEventListener("keydown", quickSearch);
