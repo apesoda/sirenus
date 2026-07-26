@@ -79,7 +79,7 @@ function searchSound() {
   label.style.display = "none";
 
   for (i = 0; i < results.length; i++) {
-    textValue = results[i].textContent || results[i].innnerText;
+    textValue = results[i].textContent || results[i].innerText;
 
     if (textValue.toUpperCase().indexOf(filter) > -1) {
       results[i].style.display = "";
