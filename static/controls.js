@@ -3,9 +3,8 @@
 // ============================================================
 
 function toggleOptions() {
-  var button, chevron, label;
+  var chevron, label, options;
 
-  button = document.getElementById('show-button-module');
   chevron = document.getElementById('show-chevron');
   label = document.getElementById('show-label');
   options = document.getElementById('more-options');
@@ -67,7 +66,7 @@ function stopSound() {
 
 // Filter search results
 function searchSound() {
-  var input, filter, sounds, a, i, textValue, label;
+  var input, filter, sounds, i, textValue, label, results;
 
   input = document.getElementById('search-box');
   filter = input.value.toUpperCase();
