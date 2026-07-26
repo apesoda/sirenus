@@ -28,21 +28,25 @@ function toggleOptions() {
 // ============================================================
 
 // Play requested sound
-function playSound(soundFile) {
-  fetch('/play', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ 'sound_file': soundFile }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
+function playSound(event) {
+  if (event.target.tagName === 'BUTTON') {
+    let soundFile = event.target.dataset.sound;
+
+    fetch('/play', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 'sound_file': soundFile }),
     })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 }
 
 // Stop sound playing
@@ -141,7 +145,7 @@ function speakText() {
 // ============================================================
 
 // Quickly search using the '/' key
-function quickSearch() {
+function quickSearch(event) {
   var options = document.getElementById('more-options');
   var optionsVisibility = window.getComputedStyle(options).display;
 
@@ -156,5 +160,14 @@ function quickSearch() {
   }
 }
 
-// Listener for keyboard shortcuts
+
+// ============================================================
+// Event Listeners
+// ============================================================
+
+// Sound button event delegation
+const buttonContainer = document.getElementById('button-container');
+buttonContainer.addEventListener("click", playSound);
+
+// Keyboard shortcuts
 window.addEventListener("keydown", quickSearch);
