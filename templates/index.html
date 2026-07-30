@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/output.css">
     <title>{{ config['ui']['title'] }}</title>
-    <script src="../static/controls.js"></script>
+    <script src="../static/controls.js" defer></script>
 </head>
 
 <!--- Body --->
@@ -90,7 +90,7 @@
     <!--- Button Container --->
     <div id="button-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-neutral-200 mx-auto max-w-7xl py-6">
     	{% for sound in sounds %}
-          <button onclick="playSound('{{ sound }}')" class="font-medium rounded-lg bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150">
+          <button data-sound="{{ sound }}" class="font-medium rounded-lg bg-teal-600 p-2 hover:bg-teal-700 ease-in-out duration-150">
             {{ sound|title|replace(".mp3", "")|replace("_", " ") }}
           </button>
     	{% endfor %}
