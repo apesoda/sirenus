@@ -139,8 +139,8 @@ def upload_sound():
    if file and allowed_file(file.filename):
        filename = secure_filename(file.filename)
        file.save(os.path.join(config['app']['sound_dir'], filename))
-       return redirect(url_for('upload_sound', name=filename))
-   return "Uploaded!"
+       #return redirect(url_for('upload_sound', name=filename))
+       return jsonify({'status': 'success', 'file': filename, 'message':'The file was uploaded succesfully'}), 200
 
 if __name__ == '__main__':
     app.run(port=config['app']['port'], host=config['app']['host'])
